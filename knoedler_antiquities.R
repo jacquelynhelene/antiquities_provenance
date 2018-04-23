@@ -11,6 +11,13 @@ knoedler_antiquities_data <- gs_read(knoedler_antiquities)
 
 raw_load("raw_knoedler")
 
+# All Knoedler
+
+ancient_knoedler_all <- knoedler_antiquities_data %>%
+  left_join(raw_knoedler, by = c("knoedler_number" = "knoedler_number"))
+
+
+# Selected Fields ----
 knoedler_info <- raw_knoedler %>%
   select(pi_record_no, stock_book_no, knoedler_number, art_authority_1, title, description, subject, object_type, materials) 
 
@@ -30,7 +37,4 @@ library(lubridate)
 
 knoedler_parsed_dates <- digging_dealing_data %>%
   mutate(joined_date = )
-
-This is a test
-This is another test
 
